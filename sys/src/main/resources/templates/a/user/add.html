@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>用户信息</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/bower_components/select2/dist/css/select2.min.css">
+</head>
+<body>
+<div class="container-fluid">
+    <form id="userInfo" class="form-horizontal" th:object="${user}" th:action="@{/user/save}" method="post">
+        <div class="row">
+            <input type="hidden" id="id" name="id" th:field="*{id}"/>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">姓名:</label>
+                    <div class="controls">
+                        <input name="name" htmlEscape="false" maxlength="50" class="required" th:field="*{name}"/>
+                        <span class="help-inline"><span color="red">*</span> </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">账号:</label>
+                    <div class="controls">
+                        <input name="username" htmlEscape="false" maxlength="50" class="required userName"
+                               th:field="*{username}"/>
+                        <span class="help-inline"><span color="red">*</span> </span>
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">密码:</label>
+                    <div class="controls">
+                        <input id="password" name="password" type="password" value="" maxlength="50" minlength="3"
+                               class="${empty user.id?'required':''}"/>
+                        <span class="help-inline"><span color="red">*</span> </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">确认密码:</label>
+                    <div class="controls">
+                        <input id="confirmPassword" name="confirmPassword" type="password" value="" maxlength="50"
+                               minlength="3" equalTo="#password"/>
+                        <span class="help-inline"><span color="red">*</span> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">角色:</label>
+                    <div class="controls">
+                        <select th:field="*{roleList}" class="form-control select2" multiple="multiple">
+                            <option th:each="role : ${allRoles}" th:value="${role.id}" th:text="${role.name}">test
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">所属部门:</label>
+                    <div class="controls">
+                        <select th:field="*{department}">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">工号:</label>
+                    <div class="controls">
+                        <input th:field="*{employeeNumber}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">邮箱:</label>
+                    <div class="controls">
+                        <input name="email" htmlEscape="false" maxlength="100" class="email"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">手机:</label>
+                    <div class="controls">
+                        <input name="mobile" htmlEscape="false" maxlength="100"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">电话:</label>
+                    <div class="controls">
+                        <input name="phone" htmlEscape="false" maxlength="100"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">用户类型:</label>
+                    <div class="controls">
+                        <select name="userType" class="input-xlarge">
+                            <option value="" label="请选择"/>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-group">
+                    <label class="control-label">状态:</label>
+                    <div class="controls">
+                        <input th:field="*{state}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>
+            <input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
+        </div>
+    </form>
+</div>
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+    function submitForm() {
+
+    }
+
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
+        $("#userInfo").submit(submitForm);
+    })
+</script>
+</body>
+</html>

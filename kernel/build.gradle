@@ -1,0 +1,22 @@
+group 'com.suncompass.plateform'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.apache.commons:commons-lang3:3.7')
+    compile('commons-codec:commons-codec:1.11')
+    compile('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
+    compile('com.google.guava:guava:23.0')
+    compile('javax.servlet:javax.servlet-api:3.1.0')
+    compile('org.springframework:spring-web:4.3.12.RELEASE')
+    compile('org.slf4j:slf4j-api:1.7.25')
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.8.0'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.100.118:3306/plateform?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: dev
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    locale: zh
+    time-zone: GMT+8
+
+#logging:
+#  level:
+#    root: debug
+
+app:
+  adminPath : /a
+  id: 1
+  name: 基础框架平台
+  allowMultiLogin: false
+shiro:
+  loginUrl: /login
+  successUrl: /a
+
+

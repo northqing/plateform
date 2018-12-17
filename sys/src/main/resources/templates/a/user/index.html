@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>用户管理首页</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/bower_components/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-primary" id="add-user">添加用户</button>
+    </div>
+</div>
+<div class="box">
+    <table id="userTable" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th><input type="checkbox" name="" value=""></th>
+            <th>账号</th>
+            <th>名称</th>
+            <th>部门</th>
+            <th>状态</th>
+            <th>最近登陆时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div id='userDialog'></div>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="/js/user.js"></script>
+</body>
+</html>

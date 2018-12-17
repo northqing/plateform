@@ -1,0 +1,2 @@
+rootProject.name = 'plateform'
+include 'kernel','sys'
